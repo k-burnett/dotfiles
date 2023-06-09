@@ -60,6 +60,7 @@ call plug#begin('~/.vim/plugged')
 " colors / theming
 Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
+Plug 'crusoexia/vim-monokai'
 
 " treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " remember to do :TSInstall <language>
@@ -67,6 +68,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " remember to do :TS
 " autopep8 formatting...
 Plug 'tell-k/vim-autopep8'
 
+" indent lines
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 " for nvim-cmp...
 Plug 'neovim/nvim-lspconfig'
@@ -88,7 +91,7 @@ Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-tree/nvim-tree.lua'
 
-" minimap!
+" minimap! -- I don't really see what this is adding for me at this point...
 " Plug 'wfxr/minimap.vim'
 
 " for tabs...
@@ -116,7 +119,9 @@ call plug#end()
 " colors / themeing
 " ===================================================================================
 "colorscheme gruvbox
-colorscheme gruvbox-material
+" colorscheme gruvbox-material
+syntax on 
+colorscheme monokai
 hi Normal guibg=NONE ctermbg=NONE
 
 
@@ -128,8 +133,12 @@ lua require('plugins')
 lua require('gitsigns').setup()
 " custom statusline
 lua require('statusline')
+" disable the default mode 
+set noshowmode
 
 lua require('dashboard')
+
+lua require('blankline')
 
 " autopep8 setup...(press F8 to atuomagically apply pep8 to current file)
 autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
