@@ -13,7 +13,8 @@ lsp.set_sign_icons({
 
 lsp.ensure_installed({
   'pyright',
-  'lua_ls'
+  'lua_ls',
+  'rust_analyzer',
 })
 
 
@@ -22,6 +23,9 @@ local lspconfig = require('lspconfig')
 -- lua lsp
 lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 lsp.setup()
+
+-- rust
+lspconfig.rust_analyzer.setup({})
 
 -- python lsp
 lspconfig.pyright.setup({
