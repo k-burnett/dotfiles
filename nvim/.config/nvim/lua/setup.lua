@@ -151,7 +151,13 @@ require('lazy').setup({
       require("nvim-treesitter.configs").setup(opts)
     end,
   },
-  { "lukas-reineke/indent-blankline.nvim" },
+  { -- WIT? => This gives you indent line indications
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    ---@module "ibl"
+    ---@type ibl.config
+    opts = {},
+  },
   {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" },
